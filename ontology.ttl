@@ -1,0 +1,750 @@
+@prefix : <https://w3id.org/football-cdf/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/football-cdf/core#> .
+
+<https://w3id.org/football-cdf/core> rdf:type owl:Ontology ;
+                                      <http://purl.org/dc/terms/contributor> "Gregor Kaefer" ,
+                                                                             "Matthias Kempe" ;
+                                      <http://purl.org/dc/terms/created> "2025-07-31" ;
+                                      <http://purl.org/dc/terms/creator> "Fajar J. Ekaputra" ;
+                                      <http://purl.org/dc/terms/description> """An ontology serialization of the Football Common Data Format (CDF).
+                                                                             Currently in alpha version, focusing on Match Sheet, Event, and Match Metadata."""@en ;
+                                      <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0> ;
+                                      <http://purl.org/dc/terms/modified> "2025-11-01" ;
+                                      <http://purl.org/dc/terms/title> "The Football Common Data Format (CDF) Ontology"@en ;
+                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "fcdf" ;
+                                      <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/football-cdf/core#" ;
+                                      owl:versionInfo "1.0.0-alpha-2" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/football-cdf/core#assist_id
+:assist_id rdf:type owl:ObjectProperty ;
+           rdfs:domain :Goal ;
+           rdfs:range :Player ;
+           rdfs:comment "The player who provided the assist for the goal." ;
+           rdfs:label "assist_id" .
+
+
+###  https://w3id.org/football-cdf/core#competition
+:competition rdf:type owl:ObjectProperty ;
+             rdfs:domain :Match ;
+             rdfs:range :Competition ;
+             rdfs:comment "The competition in which the match is played." ;
+             rdfs:label "competition" .
+
+
+###  https://w3id.org/football-cdf/core#events
+:events rdf:type owl:ObjectProperty ;
+        rdfs:domain :Match ;
+        rdfs:range :Event ;
+        rdfs:comment "The events that occur during the match." ;
+        rdfs:label "events" .
+
+
+###  https://w3id.org/football-cdf/core#events_cards
+:events_cards rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :events ;
+              rdfs:domain :Match ;
+              rdfs:range :Card ;
+              rdfs:comment "The card events that occur during the match." ;
+              rdfs:label "event_cards" .
+
+
+###  https://w3id.org/football-cdf/core#events_goals
+:events_goals rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :events ;
+              rdfs:domain :Match ;
+              rdfs:range :Goal ;
+              rdfs:comment "The goal events that occur during the match." ;
+              rdfs:label "event_goals" .
+
+
+###  https://w3id.org/football-cdf/core#events_subtitutions
+:events_subtitutions rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :events ;
+                     rdfs:domain :Match ;
+                     rdfs:range :Subtitution ;
+                     rdfs:comment "The substitution events that occur during the match." ;
+                     rdfs:label "event_substitutions" .
+
+
+###  https://w3id.org/football-cdf/core#match_result
+:match_result rdf:type owl:ObjectProperty ;
+              rdfs:domain :Match ;
+              rdfs:range :Match_Result ;
+              rdfs:comment "The result of the match." ;
+              rdfs:label "match_result" .
+
+
+###  https://w3id.org/football-cdf/core#match_status
+:match_status rdf:type owl:ObjectProperty ;
+              rdfs:domain :Match ;
+              rdfs:range :Match_Status ;
+              rdfs:comment "The status of the match." ;
+              rdfs:label "match_status" .
+
+
+###  https://w3id.org/football-cdf/core#meta_video
+:meta_video rdf:type owl:ObjectProperty ;
+            rdfs:domain :Match ;
+            rdfs:range :Meta ;
+            rdfs:comment "Metadata related to the match video." ;
+            rdfs:label "video_metadata" .
+
+
+###  https://w3id.org/football-cdf/core#out_player_id
+:out_player_id rdf:type owl:ObjectProperty ;
+               rdfs:domain :Subtitution ;
+               rdfs:range :Player ;
+               rdfs:comment "The player who is substituted out." ;
+               rdfs:label "out_player_id" .
+
+
+###  https://w3id.org/football-cdf/core#player_id
+:player_id rdf:type owl:ObjectProperty ;
+           rdfs:domain :Event ;
+           rdfs:range :Player ;
+           rdfs:comment "The player associated with the event." ;
+           rdfs:label "player_id" .
+
+
+###  https://w3id.org/football-cdf/core#players
+:players rdf:type owl:ObjectProperty ;
+         rdfs:domain :Team ;
+         rdfs:range :Player ;
+         rdfs:comment "The players that are part of the team." ;
+         rdfs:label "players" .
+
+
+###  https://w3id.org/football-cdf/core#receiver_id
+:receiver_id rdf:type owl:ObjectProperty ;
+             rdfs:domain :Pass ;
+             rdfs:range :Player ;
+             rdfs:comment "The player who received the pass." ;
+             rdfs:label "receiver_id" .
+
+
+###  https://w3id.org/football-cdf/core#referee
+:referee rdf:type owl:ObjectProperty ;
+         rdfs:domain :Match ;
+         rdfs:range :Referee ;
+         rdfs:comment "The referee officiating the match." ;
+         rdfs:label "referee" .
+
+
+###  https://w3id.org/football-cdf/core#related_event_ids
+:related_event_ids rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Event ;
+                   rdfs:range :Event ;
+                   rdfs:comment """ 
+            Unique identifier(s) of the events related to the action, or pass and associated receival event. 
+            Leave null if no related events exist.
+            """ ;
+                   rdfs:label "related_event_ids" .
+
+
+###  https://w3id.org/football-cdf/core#season
+:season rdf:type owl:ObjectProperty ;
+        rdfs:domain :Match ;
+        rdfs:range :Season ;
+        rdfs:comment "The season during which the match takes place." ;
+        rdfs:label "season" .
+
+
+###  https://w3id.org/football-cdf/core#team_id
+:team_id rdf:type owl:ObjectProperty ;
+         rdfs:range :Team ;
+         rdfs:comment "The team associated with an event or player." ;
+         rdfs:label "team_id" .
+
+
+###  https://w3id.org/football-cdf/core#teams_away
+:teams_away rdf:type owl:ObjectProperty ;
+            rdfs:domain :Match ;
+            rdfs:range :Team ;
+            rdfs:comment "The away team participating in the match." ;
+            rdfs:label "team_away" .
+
+
+###  https://w3id.org/football-cdf/core#teams_home
+:teams_home rdf:type owl:ObjectProperty ;
+            rdfs:domain :Match ;
+            rdfs:range :Team ;
+            rdfs:comment "The home team participating in the match." ;
+            rdfs:label "team_home" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/football-cdf/core#body_part
+:body_part rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string ;
+           rdfs:comment """ 
+            Denotes the body part used by player_id which can take on the values: 
+                left_foot, 
+                right_foot, 
+                head, or 
+                other
+            """ ;
+           rdfs:label "body_part" .
+
+
+###  https://w3id.org/football-cdf/core#card_type
+:card_type rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Card ;
+           rdfs:range xsd:string ;
+           rdfs:comment """ 
+                    'yellow', 
+                    'red', 
+                    'second_yellow'
+                    """ ;
+           rdfs:label "card_type" .
+
+
+###  https://w3id.org/football-cdf/core#collection_timing
+:collection_timing rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Meta ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:comment "The date and time when the data was collected." ;
+                   rdfs:label "Collection_Timing" .
+
+
+###  https://w3id.org/football-cdf/core#event_period
+:event_period rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:string ;
+              rdfs:comment """ 
+            'first_half', 
+            'second_half',
+            'first_half_extratime', 
+            'second_half_extratime', 
+            'shootout'
+            """ ;
+              rdfs:label "event_period" .
+
+
+###  https://w3id.org/football-cdf/core#fps
+:fps rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Meta ;
+     rdfs:range xsd:integer ;
+     rdfs:comment "The frame rate of the video." ;
+     rdfs:label "fps" .
+
+
+###  https://w3id.org/football-cdf/core#has_extratime
+:has_extratime rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Match_Status ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "Indicates if the match has gone into extra time." ;
+               rdfs:label "has_extratime" .
+
+
+###  https://w3id.org/football-cdf/core#has_played
+:has_played rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Player ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Indicates if the player has played in the match." ;
+            rdfs:label "has_played" .
+
+
+###  https://w3id.org/football-cdf/core#has_shootout
+:has_shootout rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Match_Status ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "Indicates if the match has gone into a shootout." ;
+              rdfs:label "has_shootout" .
+
+
+###  https://w3id.org/football-cdf/core#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A unique identifier for the entity." ;
+    rdfs:label "id" .
+
+
+###  https://w3id.org/football-cdf/core#is_neutral
+:is_neutral rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Match_Status ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Indicates if the match is played on neutral ground." ;
+            rdfs:label "is_neutral" .
+
+
+###  https://w3id.org/football-cdf/core#is_own_goal
+:is_own_goal rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Goal ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "Indicates if the goal was an own goal." ;
+             rdfs:label "is_own_goal" .
+
+
+###  https://w3id.org/football-cdf/core#is_penalty
+:is_penalty rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Goal ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Indicates if the goal was scored from a penalty kick." ;
+            rdfs:label "is_penalty" .
+
+
+###  https://w3id.org/football-cdf/core#is_starter
+:is_starter rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Player ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Indicates if the player is in the starting lineup." ;
+            rdfs:label "is_starter" .
+
+
+###  https://w3id.org/football-cdf/core#jersey_number
+:jersey_number rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Player ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "The jersey number of the player." ;
+               rdfs:label "jersey_number" .
+
+
+###  https://w3id.org/football-cdf/core#kickoff_time
+:kickoff_time rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Match ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "The date and time when the match starts." ;
+              rdfs:label "Kickoff Time" .
+
+
+###  https://w3id.org/football-cdf/core#misc_outcome_type
+:misc_outcome_type rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :outcome_type ;
+                   rdfs:domain :Misc ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment """ 
+                'successful', 
+                'unsuccessful'
+                """ ;
+                   rdfs:label "misc_outcome_type" .
+
+
+###  https://w3id.org/football-cdf/core#misc_type
+:misc_type rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :sub_type ;
+           rdfs:domain :Misc ;
+           rdfs:range xsd:string ;
+           rdfs:comment """ 
+                'other_ball_action', 
+                'chance_without_shot', 
+                'tackle'
+                """ ;
+           rdfs:label "misc_type" .
+
+
+###  https://w3id.org/football-cdf/core#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The name of the entity." ;
+      rdfs:label "name" .
+
+
+###  https://w3id.org/football-cdf/core#out_time
+:out_time rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Subtitution ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "The date and time when the player is substituted out." ;
+          rdfs:label "out_time" .
+
+
+###  https://w3id.org/football-cdf/core#outcome_type
+:outcome_type rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:string ;
+              rdfs:comment """ 
+            Detailed event outcome options: 
+                shot (successful, saved, blocked, wide, woodwork, own_goal); 
+                pass (successful, out_of_play, intercepted); 
+                referee (start, end, injury, yellow_card, red_card, second_yellow_card); 
+                misc (successful, unsuccessful)
+            """ ;
+              rdfs:label "outcome_type" .
+
+
+###  https://w3id.org/football-cdf/core#pass_outcome_type
+:pass_outcome_type rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :outcome_type ;
+                   rdfs:domain :Pass ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment """ 
+                'successful', 
+                'out_of_play',  
+                'intercepted',
+                """ ;
+                   rdfs:label "pass_outcome_type" .
+
+
+###  https://w3id.org/football-cdf/core#pass_type
+:pass_type rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :sub_type ;
+           rdfs:domain :Shot ;
+           rdfs:range xsd:string ;
+           rdfs:comment """ 
+                'None', 
+                'throw_in', 
+                'free_kick', 
+                'corner_kick', 
+                'goal_kick', 
+                'kick_off'
+                """ ;
+           rdfs:label "pass_type" .
+
+
+###  https://w3id.org/football-cdf/core#receiver_time
+:receiver_time rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Pass ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "The date and time when the pass was received." ;
+               rdfs:label "receiver_time" .
+
+
+###  https://w3id.org/football-cdf/core#result_away
+:result_away rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Match_Result ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "The number of goals scored by the away team." ;
+             rdfs:label "result_away" .
+
+
+###  https://w3id.org/football-cdf/core#result_home
+:result_home rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Match_Result ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "The number of goals scored by the home team." ;
+             rdfs:label "result_home" .
+
+
+###  https://w3id.org/football-cdf/core#result_period
+:result_period rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Match_Result ;
+               rdfs:range xsd:string ;
+               rdfs:comment """ 
+            'final', 
+            'first_half', 
+            'second_half',
+            'first_half_extratime', 
+            'second_half_extratime', 
+            'shootout'
+            """ ;
+               rdfs:label "result_period" .
+
+
+###  https://w3id.org/football-cdf/core#shot_outcome_type
+:shot_outcome_type rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :outcome_type ;
+                   rdfs:domain :Shot ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment """ 
+                'successful', 
+                'saved',  
+                'blocked',
+                'wide',
+                'woodwork',
+                'own_goal',
+                """ ;
+                   rdfs:label "shot_outcome_type" .
+
+
+###  https://w3id.org/football-cdf/core#shot_type
+:shot_type rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :sub_type ;
+           rdfs:domain :Shot ;
+           rdfs:range xsd:string ;
+           rdfs:comment """ 
+                'None', 
+                'penalty_kick', 
+                'free_kick', 
+                'corner_kick',
+                """ ;
+           rdfs:label "shot_type" .
+
+
+###  https://w3id.org/football-cdf/core#sub_type
+:sub_type rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Event ;
+          rdfs:range xsd:string ;
+          rdfs:comment """ 
+            Name of the event subtype, which can be for 
+                shot (None, penalty_kick, free_kick, corner_kick); 
+                pass (None, throw_in, free_kick, corner_kick, goal_kick, kick_off); 
+                referee (final_whistle, foul, caution, offside, substitution, player_on, player_off); 
+                misc (other_ball_action, chance_without_shot, tackle)
+            """ ;
+          rdfs:label "sub_type" .
+
+
+###  https://w3id.org/football-cdf/core#time
+:time rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Event ;
+      rdfs:range xsd:dateTime ;
+      rdfs:comment "The date and time when the event occurs." ;
+      rdfs:label "time" .
+
+
+###  https://w3id.org/football-cdf/core#type
+:type rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Event ;
+      rdfs:range xsd:string ;
+      rdfs:comment """ 
+            'shot',
+            'substitution', 
+            'card', 
+            'pass', 
+            'shootout'
+            """ ;
+      rdfs:label "type" .
+
+
+###  https://w3id.org/football-cdf/core#vendor
+:vendor rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Meta ;
+        rdfs:range xsd:string ;
+        rdfs:comment "The vendor providing the data." ;
+        rdfs:label "vendor" .
+
+
+###  https://w3id.org/football-cdf/core#version
+:version rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Meta ;
+         rdfs:range xsd:string ;
+         rdfs:comment "The version of the metadata." ;
+         rdfs:label "version" .
+
+
+###  https://w3id.org/football-cdf/core#whistle_outcome_type
+:whistle_outcome_type rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Whistle ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment """ 
+                'start', 
+                'end', 
+                'injury', 
+                'yellow_card', 
+                'red_card', 
+                'second_yellow_card'
+                """ ;
+                      rdfs:label "whistle_outcome_type" .
+
+
+###  https://w3id.org/football-cdf/core#whistle_type
+:whistle_type rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :sub_type ;
+              rdfs:domain :Whistle ;
+              rdfs:range xsd:string ;
+              rdfs:comment """ 
+                'final_whistle', 
+                'foul', 
+                'caution', 
+                'offside', 
+                'substitution', 
+                'player_on', 
+                'player_off'
+                """ ;
+              rdfs:label "whistle_type" .
+
+
+###  https://w3id.org/football-cdf/core#x
+:x rdf:type owl:DatatypeProperty ;
+   rdfs:domain :Event ;
+   rdfs:range xsd:float ;
+   rdfs:comment "The x-coordinate of the event on the pitch." ;
+   rdfs:label "x" .
+
+
+###  https://w3id.org/football-cdf/core#x_end
+:x_end rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Event ;
+       rdfs:range xsd:float ;
+       rdfs:comment "The ending x-coordinate of the event on the pitch." ;
+       rdfs:label "x_end" .
+
+
+###  https://w3id.org/football-cdf/core#y
+:y rdf:type owl:DatatypeProperty ;
+   rdfs:domain :Event ;
+   rdfs:range xsd:float ;
+   rdfs:comment "The x-coordinate of the event on the pitch." ;
+   rdfs:label "y" .
+
+
+###  https://w3id.org/football-cdf/core#y_end
+:y_end rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Event ;
+       rdfs:range xsd:float ;
+       rdfs:comment "The ending y-coordinate of the event on the pitch." ;
+       rdfs:label "y_end" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/football-cdf/core#Card
+:Card rdf:type owl:Class ;
+      rdfs:subClassOf :Whistle ;
+      rdfs:comment "A card event that occurs during the match." ;
+      rdfs:label "Card" .
+
+
+###  https://w3id.org/football-cdf/core#Competition
+:Competition rdf:type owl:Class ;
+             rdfs:comment "The competition in which the match is played." ;
+             rdfs:label "Competition" .
+
+
+###  https://w3id.org/football-cdf/core#Event
+:Event rdf:type owl:Class ;
+       rdfs:comment "An event that occurs during the match." ;
+       rdfs:label "Event" .
+
+
+###  https://w3id.org/football-cdf/core#Goal
+:Goal rdf:type owl:Class ;
+      rdfs:subClassOf :Shot ;
+      rdfs:comment "A goal event that occurs during the match." ;
+      rdfs:label "Goal" .
+
+
+###  https://w3id.org/football-cdf/core#Match
+:Match rdf:type owl:Class ;
+       rdfs:comment "A football (soccer) match between two teams." ;
+       rdfs:label "Match" .
+
+
+###  https://w3id.org/football-cdf/core#Match_Result
+:Match_Result rdf:type owl:Class ;
+              rdfs:comment "The result of the match." ;
+              rdfs:label "Match Result" .
+
+
+###  https://w3id.org/football-cdf/core#Match_Status
+:Match_Status rdf:type owl:Class ;
+              rdfs:comment "The status of the match." ;
+              rdfs:label "Match Status" .
+
+
+###  https://w3id.org/football-cdf/core#Meta
+:Meta rdf:type owl:Class ;
+      rdfs:comment "Metadata information related to the match video." ;
+      rdfs:label "metadata" .
+
+
+###  https://w3id.org/football-cdf/core#Misc
+:Misc rdf:type owl:Class ;
+      rdfs:subClassOf :Event ;
+      rdfs:comment "A miscellaneous event that occurs during the match." ;
+      rdfs:label "Miscellaneous Event" .
+
+
+###  https://w3id.org/football-cdf/core#Pass
+:Pass rdf:type owl:Class ;
+      rdfs:subClassOf :Event ;
+      rdfs:comment "A pass event that occurs during the match." ;
+      rdfs:label "Pass" .
+
+
+###  https://w3id.org/football-cdf/core#Player
+:Player rdf:type owl:Class ;
+        rdfs:comment "A football (soccer) player participating in the match." ;
+        rdfs:label "Player" .
+
+
+###  https://w3id.org/football-cdf/core#Referee
+:Referee rdf:type owl:Class ;
+         rdfs:comment "The referee officiating the match." ;
+         rdfs:label "Referee" .
+
+
+###  https://w3id.org/football-cdf/core#Season
+:Season rdf:type owl:Class ;
+        rdfs:comment "The season during which the match takes place." ;
+        rdfs:label "Season" .
+
+
+###  https://w3id.org/football-cdf/core#Shot
+:Shot rdf:type owl:Class ;
+      rdfs:subClassOf :Event ;
+      rdfs:comment "A shot event that occurs during the match." ;
+      rdfs:label "Shot" .
+
+
+###  https://w3id.org/football-cdf/core#Subtitution
+:Subtitution rdf:type owl:Class ;
+             rdfs:subClassOf :Whistle ;
+             rdfs:comment "A substitution event that occurs during the match." ;
+             rdfs:label "Subtitution" .
+
+
+###  https://w3id.org/football-cdf/core#Team
+:Team rdf:type owl:Class ;
+      rdfs:comment "A football (soccer) team participating in the match." ;
+      rdfs:label "Team" .
+
+
+###  https://w3id.org/football-cdf/core#Vendor
+:Vendor rdf:type owl:Class ;
+        rdfs:comment "The vendor providing the data." ;
+        rdfs:label "Vendor" .
+
+
+###  https://w3id.org/football-cdf/core#Whistle
+:Whistle rdf:type owl:Class ;
+         rdfs:subClassOf :Event ;
+         rdfs:comment "A referee event that occurs during the match." ;
+         rdfs:label "Whistle" .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
