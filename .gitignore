@@ -32,6 +32,11 @@ Thesis.pdf
 !qa_template_bank.md
 !qa_eval_questions.txt
 
+# Local-only helpers and assets
+/rerun_failed_qa.py
+/verify_gold_sparql_fixes.py
+/images/
+
 # Data and evaluation outputs (override directory whitelists above)
 *.json
 *.jsonl
