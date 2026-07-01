@@ -1,0 +1,37 @@
+# Whitelist: ignore everything except the thesis pipeline paths below.
+# (chroma_db/, *.json / *.jsonl, large TTL exports, __pycache__/, etc. stay untracked.)
+
+/*
+
+# Allow Git to enter directories (needed for "Past tries/")
+!*/
+
+.claude/
+open-data/
+chroma_db/
+chroma_db_*/
+chroma_langchain_db/
+__pycache__/
+jsonld_batch_output/
+cdf_batch_output/
+fcdf_kg.ttl
+statements.ttl
+Thesis.pdf
+
+# Past tries — entire folder
+!Past tries/
+!Past tries/**
+
+# Root notebooks, scripts, and project files
+!/*.ipynb
+!/*.py
+!/ontology.ttl
+!/.gitignore
+!README.md
+!requirements.txt
+!qa_template_bank.md
+!qa_eval_questions.txt
+
+# Data and evaluation outputs (override directory whitelists above)
+*.json
+*.jsonl
