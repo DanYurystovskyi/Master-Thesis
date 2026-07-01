@@ -1,1 +1,19 @@
+# Core KG / QA pipeline (graphdb_ontology_qa, kg_triples_rag, hybrid_kg_qa, cdf_json_rag)
 rdflib>=6.0.0
+requests
+openai
+chromadb
+
+# Ontology inspection
+pandas
+
+# BERTScore eval (bertscore_eval.ipynb — bert-score 0.3.x needs transformers 4.x)
+bert-score
+transformers>=4.44,<5
+torch
+
+# Ragas eval (ragas_eval.ipynb)
+ragas>=0.2.0
+datasets
+langchain-community
+sentence-transformers
